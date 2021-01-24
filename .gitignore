@@ -1,5 +1,5 @@
 *.o
-./Dilatation
-./Erosion
-./Opening
-./Closing
+Dilatation
+Erosion
+Opening
+Closing

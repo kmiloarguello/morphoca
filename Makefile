@@ -1,5 +1,5 @@
 
-all:	Dilatation
+all:	Dilatation Erosion Opening Closing
 
 clean:
 	rm *.o ./Dilatation ./Erosion ./Opening ./Closing
