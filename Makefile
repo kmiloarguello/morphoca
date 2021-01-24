@@ -2,7 +2,7 @@
 all:	Dilatation
 
 clean:
-	rm *.o Dilatation *~
+	rm *.o ./Dilatation ./Erosion ./Opening ./Closing
 
 mcimage.o:	mcimage.c mcimage.h mcutil.h mccodimage.h
 	gcc -c mcimage.c
@@ -15,3 +15,9 @@ Dilatation:	Dilatation.c mcimage.h mccodimage.h graphes.h mcimage.o graph_basic.
 
 Erosion: Erosion.c mcimage.h mccodimage.h graphes.h mcimage.o graph_basic.o
 	gcc Erosion.c mcimage.o graph_basic.o -o Erosion
+
+Opening: Opening.c mcimage.h mccodimage.h graphes.h mcimage.o graph_basic.o
+	gcc Opening.c mcimage.o graph_basic.o -o Opening
+
+Closing: Closing.c mcimage.h mccodimage.h graphes.h mcimage.o graph_basic.o
+	gcc Closing.c mcimage.o graph_basic.o -o Closing

@@ -307,7 +307,7 @@ int main(int argc, char ** argv){
   
   X = UCHARDATA(image); 
   
-  for(i=0;i<3;i++){
+  for(i=0;i<1;i++){
     G = Erosion(G);
   }
   

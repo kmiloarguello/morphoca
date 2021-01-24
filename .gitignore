@@ -1,0 +1,5 @@
+*.o
+./Dilatation
+./Erosion
+./Opening
+./Closing
