@@ -165,7 +165,7 @@ A weight W(P,Q) is assigned to each edge, according to the value of \b mode:
 } /* Image2Graphe() */
 
 
-graphe * Erosion(unsigned char *X, struct graphe *g1) {
+graphe * Erosion(struct graphe *g1) {
 
   graphe * g;
   int32_t i, j;
@@ -272,6 +272,7 @@ struct xvimage *Graphe2Image(graphe * g, int32_t rs)
 int main(int argc, char ** argv){
   struct xvimage * image;
   struct xvimage *imageResult;
+  int32_t i;
 
   int *tab_es_i;               /* list of the first coordinates of the points in the s.e. */
   int *tab_es_j;               /* list of the second coordinates of the points in the s.e. */
@@ -306,8 +307,10 @@ int main(int argc, char ** argv){
   
   X = UCHARDATA(image); 
   
-  G = Erosion(X, G);
-
+  for(i=0;i<3;i++){
+    G = Erosion(G);
+  }
+  
   SaveGraphe(G, argv[argc-1]);
   
   imageResult = Graphe2Image(G, rowsize(image));

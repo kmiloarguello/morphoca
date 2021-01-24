@@ -165,7 +165,7 @@ A weight W(P,Q) is assigned to each edge, according to the value of \b mode:
 } /* Image2Graphe() */
 
 
-graphe * Dilation(unsigned char *X, struct graphe *g1) {
+graphe * Dilation(struct graphe *g1) {
 
   graphe * g;
   int32_t i, j;
@@ -195,7 +195,7 @@ graphe * Dilation(unsigned char *X, struct graphe *g1) {
         v = p->v_arc;
         
         // When the current vertex is 255 AND the successor is 0
-        if (X[i] == INSET && v != INSET) {
+        if (g1->v_sommets[i] == INSET && v != INSET) {
           AjouteArcValue(g, i, j, INSET);
           g->v_sommets[j] = INSET;
         } else { // Otherwise add the same value
@@ -254,6 +254,7 @@ struct xvimage *Graphe2Image(graphe * g, int32_t rs)
 int main(int argc, char ** argv){
   struct xvimage * image;
   struct xvimage *imageResult;
+  int32_t i;
 
   int *tab_es_i;               /* list of the first coordinates of the points in the s.e. */
   int *tab_es_j;               /* list of the second coordinates of the points in the s.e. */
@@ -289,8 +290,10 @@ int main(int argc, char ** argv){
   
   X = UCHARDATA(image); 
   
-  G = Dilation(X, G);
-
+  for(i=0;i<3;i++){
+    G = Dilation(G);
+  }
+  
   SaveGraphe(G, argv[argc-1]);
   
   imageResult = Graphe2Image(G, rowsize(image));
