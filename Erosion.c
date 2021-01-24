@@ -165,7 +165,7 @@ A weight W(P,Q) is assigned to each edge, according to the value of \b mode:
 } /* Image2Graphe() */
 
 
-graphe * Dilation(unsigned char *X, struct graphe *g1) {
+graphe * Erosion(unsigned char *X, struct graphe *g1) {
 
   graphe * g;
   int32_t i, j;
@@ -180,6 +180,7 @@ graphe * Dilation(unsigned char *X, struct graphe *g1) {
     for (i = 0; i < nsom; i++) 
       g->v_sommets[i] = g1->v_sommets[i];
 
+  
   if (g1->x)
     for (i = 0; i < nsom; i++) 
     {
@@ -189,24 +190,41 @@ graphe * Dilation(unsigned char *X, struct graphe *g1) {
     }
 
   for (i = 0; i < nsom; i++) {
-
     for (p = g1->gamma[i]; p != NULL; p = p->next) {
         j = p->som;
         v = p->v_arc;
-        
-        // When the current vertex is 255 AND the successor is 0
-        if (X[i] == INSET && v != INSET) {
-          AjouteArcValue(g, i, j, INSET);
-          g->v_sommets[j] = INSET;
-        } else { // Otherwise add the same value
+
+        // When the current vertex is 0 AND the successor is 255
+        if (g1->v_sommets[i] == OUTSET && 
+            g1->v_sommets[j] == INSET ) {
+            g->v_sommets[j] = 1;
+            AjouteArcValue(g, i, j, OUTSET);
+        } else {
           AjouteArcValue(g, i, j, (TYP_VARC)v);
         }
-      }
+    }
   }
+
+
+  for (i = 0; i < nsom; i++) {
+    for (p = g->gamma[i]; p != NULL; p = p->next) {
+        j = p->som;
+        v = p->v_arc;
+
+        if (g->v_sommets[i] == 1) g->v_sommets[i] = 0;
+        /*
+        if(X[i] == INSET && v == INSET) {
+          X[i] = OUTSET;
+          RetireArc(g, i, j);
+        } */
+    }
+  }
+
   return g;
 
 
 }
+
 
 /* ====================================================================== */
 /*! \fn struct xvimage *Graphe2Image(graphe * g, int32_t rs)
@@ -276,7 +294,6 @@ int main(int argc, char ** argv){
     fprintf(stderr, "%s: readimage failed\n", argv[0]);
     exit(1);
   }
-
   printf("Erosion started! \n");
 
   readSeList(argv[2], &tab_es_i, &tab_es_j, &n); /* reading of the structuring element */
@@ -289,7 +306,7 @@ int main(int argc, char ** argv){
   
   X = UCHARDATA(image); 
   
-  G = Dilation(X, G);
+  G = Erosion(X, G);
 
   SaveGraphe(G, argv[argc-1]);
   
@@ -297,7 +314,7 @@ int main(int argc, char ** argv){
   writeimage(imageResult, argv[argc-1]);
   freeimage(imageResult);
 
-  printf("Dilatation done! \n");
+  printf("Erosion done! \n");
 
   freeimage(image);
   free(tab_es_i);

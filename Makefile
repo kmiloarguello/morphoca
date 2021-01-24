@@ -12,3 +12,6 @@ graph_basic.o:	graphes.h graph_basic.c
 
 Dilatation:	Dilatation.c mcimage.h mccodimage.h graphes.h mcimage.o graph_basic.o
 	gcc Dilatation.c mcimage.o graph_basic.o -o Dilatation
+
+Erosion: Erosion.c mcimage.h mccodimage.h graphes.h mcimage.o graph_basic.o
+	gcc Erosion.c mcimage.o graph_basic.o -o Erosion
