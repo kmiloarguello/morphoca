@@ -317,7 +317,7 @@ int main(int argc, char ** argv){
     exit(1);
   }
 
-  printf("Gray Dilatation started! \n");
+  printf("Gray Opening started! \n");
 
   G = Image2Graphe(image,SP_MAX, 4); /* Building of the graph */
   
@@ -331,7 +331,7 @@ int main(int argc, char ** argv){
   writeimage(imageResult, argv[argc-1]);
   freeimage(imageResult);
 
-  printf("Gray Dilatation done! \n");
+  printf("Gray Opening done! \n");
 
   freeimage(image);
   TermineGraphe(G);
