@@ -1,8 +1,8 @@
 
-all:	Dilatation Erosion Opening Closing GrayDilation GrayErosion
+all:	Dilatation Erosion Opening Closing GrayDilation GrayErosion GrayOpening
 
 clean:
-	rm *.o ./Dilatation ./Erosion ./Opening ./Closing ./GrayDilation ./GrayErosion
+	rm *.o ./Dilatation ./Erosion ./Opening ./Closing ./GrayDilation ./GrayErosion ./GrayOpening
 
 mcimage.o:	mcimage.c mcimage.h mcutil.h mccodimage.h
 	gcc -c mcimage.c
@@ -27,3 +27,6 @@ GrayDilation: GrayDilation.c mcimage.h mccodimage.h graphes.h mcimage.o graph_ba
 
 GrayErosion: GrayErosion.c mcimage.h mccodimage.h graphes.h mcimage.o graph_basic.o
 	gcc GrayErosion.c mcimage.o graph_basic.o -o GrayErosion
+
+GrayOpening: GrayOpening.c mcimage.h mccodimage.h graphes.h mcimage.o graph_basic.o
+	gcc GrayOpening.c mcimage.o graph_basic.o -o GrayOpening
