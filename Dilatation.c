@@ -164,7 +164,7 @@ A weight W(P,Q) is assigned to each edge, according to the value of \b mode:
   return g;
 } /* Image2Graphe() */
 
-
+/// Function to perfoms a Dilation
 graphe * Dilation(struct graphe *g1) {
 
   graphe * g;

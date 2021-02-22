@@ -164,7 +164,7 @@ A weight W(P,Q) is assigned to each edge, according to the value of \b mode:
   return g;
 } /* Image2Graphe() */
 
-
+/// Function to perfoms an erosion
 graphe * Erosion(struct graphe *g1) {
 
   graphe * g;
@@ -205,18 +205,14 @@ graphe * Erosion(struct graphe *g1) {
     }
   }
 
-
+  // Re updating the vertices
+  // Maybe this could be made in just one for cycle
   for (i = 0; i < nsom; i++) {
     for (p = g->gamma[i]; p != NULL; p = p->next) {
         j = p->som;
         v = p->v_arc;
 
         if (g->v_sommets[i] == 1) g->v_sommets[i] = 0;
-        /*
-        if(X[i] == INSET && v == INSET) {
-          X[i] = OUTSET;
-          RetireArc(g, i, j);
-        } */
     }
   }
 
