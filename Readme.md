@@ -28,6 +28,22 @@ This command will compile all the operators such as Dilation, Erosion, etc. Then
 ```
 That command will take an image as input (First parameter), also an structuring element (Second parameter) and Ouput image (Third parameter). If you wish you can plot you image by using the command `display output.pgm`
 
+Another example with erosion:
+```
+make
+```
+Then:
+```
+./Erosion Images/cell.pgm ESs/Cross3x3.pgm output.pgm
+```
+This commands will export an image `output.pgm` with an erosion applied to the input image `Images/cell.pgm`.
+
+For the file `GrayDilation.c` you should compile and then execute the following code:
+```
+./GrayDilation Images/cell.pgm output.pgm
+```
+In the case of an error, the program will prompt you with the message so be careful of reading all the messages in the console.
+
 ## Binary filters 
 
 This project contains different files for each operator. For example for the operator Dilation in a binary level you should run the file `Dilatation.c`, the next list show the whole list of files and its purpose.
