@@ -1,6 +1,6 @@
 # Mathematical morphology applied on graphs
 
-This repository contains the implementation for the project "Exploration in techniaques of mathematical morphology applied on graphs". 
+This repository contains the implementation for the project "Exploration in techniques of mathematical morphology applied on graphs". 
 
 ## Contents
 
