@@ -9,11 +9,11 @@ This repository contains the implementation for the project "Exploration in tech
 - Binary filters 
 - Grayscale filters
 
-# Technologies
+## Technologies
 
 The project was mainly implemented on `C`, however the implementation for irregular graphs and the test with common libraries was made in `Python`. It is important to have already installed the basic libraries of `Python` In order to execute the program in `C` it is better to do that in Linux.
 
-# How to run the code
+## How to run the code
 
 Go to the terminal and type:
 
@@ -26,3 +26,21 @@ This command will compile all the operators such as Dilation, Erosion, etc. Then
 ./Dilation Images/cell.pgm ESs/Cross3x3.pgm output.pgm
 ```
 That command will take an image as input (First parameter), also an structuring element (Second parameter) and Ouput image (Third parameter). If you wish you can plot you image by using the command `display output.pgm`
+
+## Binary filters 
+
+This project contains different files for each operator. For example for the operator Dilation in a binary level you should run the file `Dilatation.c`, the next list show the whole list of files and its purpose.
+
+- `Dilatation.c` It performs a dilation in binary level
+- `Erosion.c` It performs an erosion in binary level
+- `Opening.c` It performs an opening in binary level
+- `Closing.c` It performs a closing in binary level
+
+## Grayscale filters
+
+The following files are related to the implementation of morphological filters but on grayscale.
+
+- `GrayDilation.c` It performs a dilation in a gray level
+- `GrayErosion.c` It performs an erosion in a gray level
+- `GrayOpening.c` It performs an opening in a gray level
+- `GrayClosing.c` It performs a closing in a gray level
